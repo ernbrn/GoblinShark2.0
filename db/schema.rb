@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140627170038) do
     t.string   "room_options"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "game_play_id"
+    t.string   "game_play_id"
   end
 
 end
