@@ -15,8 +15,6 @@ module GamePlaysHelper
       GamePlay.create(room_id:20)
       "The Goblin Shark was in that room! He ate you up!! GAME OVER"
       @gameover = true
-      
-
     end
   end
 
