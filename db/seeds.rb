@@ -19,5 +19,4 @@
 
 r1 = Room.create(goblin_shark: false, kracken: false,
 iceberg: false, lochness_monster: false, whirlpool: true, room_options: [2,5,8])
-
 game = GamePlay.create(room: r1)

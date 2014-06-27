@@ -1,3 +1,3 @@
 class GamePlay < ActiveRecord::Base
-  has_one :room
+  belongs_to :room
 end
