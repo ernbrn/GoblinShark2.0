@@ -7,4 +7,24 @@ module GamePlaysHelper
       "Yes"
     end
   end
+
+  def  goblin(monster)
+    if monster == true
+      "The Goblin Shark was in that room! He ate you up!!"
+      GamePlay.delete_all
+    end
+  end
+
+  def lochness(monster)
+    if monster == true
+      "The Lochness Monster was in that room! He moved you to a random room!!!"
+    end
+  end
+
+  def lochness(monster)
+    if monster == true
+      "The Lochness Monster was in that room! He ate you up!!"
+    end
+  end
+
 end

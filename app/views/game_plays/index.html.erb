@@ -17,18 +17,16 @@
     </tr>
   </thead>
 
-  <%@game_plays%>
-
   <tbody>
     <% @game_plays.each do |game_play| %>
       <tr>
         <td><%= game_play.room_id %></td>
         <td><%= game_play.room.room_options %></td>
-        <td><%= me_talk_pretty(game_play.room.goblin_shark)%></td>
-        <td><%= game_play.room.lochness_monster %></td>
-        <td><%= game_play.room.whirlpool %></td>
-        <td><%= game_play.room.kracken %></td>
-        <td><%= game_play.room.iceberg %></td>
+      <td><%= goblin(game_play.room.goblin_shark)%></td>
+        <td><%= me_talk_pretty(game_play.room.lochness_monster) %></td>
+        <td><%= me_talk_pretty(game_play.room.whirlpool) %></td>
+        <td><%= me_talk_pretty(game_play.room.kracken) %></td>
+        <td><%= me_talk_pretty(game_play.room.iceberg) %></td>
 
 
 
