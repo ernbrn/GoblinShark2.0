@@ -6,13 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-#
-# @options =  , , , ,
-#     , , , , , ,
-#     , , , , , ,
-#     , , ]
-
-
 
 r1 = Room.create(goblin_shark: false, kracken: false,
 iceberg: false, lochness_monster: false, whirlpool: false, room_options: [2,5,8])
@@ -62,7 +55,7 @@ iceberg: false, lochness_monster: false, whirlpool: false, room_options: [6,14,1
 r16 = Room.create(goblin_shark: false, kracken: false,
 iceberg: false, lochness_monster: false, whirlpool: false, room_options: [15,17,20])
 
-r17 = Room.create(goblin_shark: false, kracken: false,
+r17 = Room.create(goblin_shark: true, kracken: false,
 iceberg: false, lochness_monster: false, whirlpool: false, room_options: [7,16,18])
 
 r18 = Room.create(goblin_shark: false, kracken: false,
@@ -74,8 +67,4 @@ iceberg: false, lochness_monster: false, whirlpool: false, room_options: [11,18,
 r20 = Room.create(goblin_shark: false, kracken: false,
 iceberg: false, lochness_monster: false, whirlpool: false, room_options: [13,16,19])
 
-
-
-
-
-game = GamePlay.create
+game = GamePlay.create(room: r20)

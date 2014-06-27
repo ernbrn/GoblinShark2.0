@@ -3,7 +3,16 @@
 <table>
   <thead>
     <tr>
-      <th>Player room</th>
+
+      <th>You are in room:</th>
+      <th>Player room Options</th>
+      <th>Is there a Goblin Shark??</th>
+      <th>Is there a Lochness Monster??</th>
+      <th>Is there a Whirlpool??</th>
+      <th>Is there a Kracken??</th>
+      <th>Is there a Iceberg??</th>
+
+
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -11,7 +20,16 @@
   <tbody>
     <% @game_plays.each do |game_play| %>
       <tr>
-        <td><%= game_play.player_room %></td>
+        <td><%= game_play.room_id %></td>
+        <td><%= game_play.room.room_options %></td>
+      <td><%= goblin(game_play.room.goblin_shark)%></td>
+        <td><%= me_talk_pretty(game_play.room.lochness_monster) %></td>
+        <td><%= me_talk_pretty(game_play.room.whirlpool) %></td>
+        <td><%= me_talk_pretty(game_play.room.kracken) %></td>
+        <td><%= me_talk_pretty(game_play.room.iceberg) %></td>
+
+
+
         <td><%= link_to 'Show', game_play %></td>
         <td><%= link_to 'Edit', edit_game_play_path(game_play) %></td>
         <td><%= link_to 'Destroy', game_play, method: :delete, data: { confirm: 'Are you sure?' } %></td>

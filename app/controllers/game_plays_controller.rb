@@ -15,10 +15,13 @@ class GamePlaysController < ApplicationController
   # GET /game_plays/new
   def new
     @game_play = GamePlay.new
+
+
   end
 
   # GET /game_plays/1/edit
   def edit
+
   end
 
   # POST /game_plays
