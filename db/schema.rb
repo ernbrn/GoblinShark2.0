@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140627162215) do
+ActiveRecord::Schema.define(version: 20140627163853) do
 
   create_table "game_plays", force: true do |t|
     t.integer  "player_room"
@@ -25,9 +25,10 @@ ActiveRecord::Schema.define(version: 20140627162215) do
     t.boolean  "iceberg"
     t.boolean  "lochness_monster"
     t.boolean  "whirlpool"
-    t.integer  "room_options"
+    t.string   "room_options"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "game_play_id"
   end
 
 end
