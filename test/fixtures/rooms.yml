@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  goblin_shark: false
+  kracken: false
+  iceberg: false
+  lochness_monster: false
+  whirlpool: false
+  room_options: 1
+
+two:
+  goblin_shark: false
+  kracken: false
+  iceberg: false
+  lochness_monster: false
+  whirlpool: false
+  room_options: 1
