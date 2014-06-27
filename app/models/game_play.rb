@@ -3,7 +3,6 @@ class GamePlay < ActiveRecord::Base
 
 
 
-
 #   def room_has_to_be_room_option
 #     if self.room.room_options
 #

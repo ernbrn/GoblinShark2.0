@@ -1,5 +1,6 @@
 module GamePlaysHelper
 
+
   def me_talk_pretty(words)
     if words == false
        "Nope!"
@@ -10,10 +11,16 @@ module GamePlaysHelper
 
   def  goblin(monster)
     if monster == true
-      "The Goblin Shark was in that room! He ate you up!!"
       GamePlay.delete_all
+      GamePlay.create(room_id:20)
+      "The Goblin Shark was in that room! He ate you up!! GAME OVER"
+      @gameover = true
+      
+
     end
   end
+
+
 
   def lochness(monster)
     if monster == true
