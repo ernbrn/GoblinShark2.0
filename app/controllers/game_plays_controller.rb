@@ -5,6 +5,7 @@ class GamePlaysController < ApplicationController
   # GET /game_plays.json
   def index
     @game_plays = GamePlay.all
+    @gameover = false
   end
 
   # GET /game_plays/1
