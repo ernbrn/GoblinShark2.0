@@ -6,7 +6,7 @@ class CreateRooms < ActiveRecord::Migration
       t.boolean :iceberg
       t.boolean :lochness_monster
       t.boolean :whirlpool
-      t.integer :room_options
+      t.string :room_options
 
       t.timestamps
     end
