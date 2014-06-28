@@ -8,7 +8,7 @@
 
 
 r1 = Room.create(goblin_shark: false, kracken: false,
-iceberg: false, lochness_monster: false, whirlpool: false, room_options: [2,5,8])
+iceberg: false, lochness_monster: true, whirlpool: false, room_options: [2,5,8])
 
 r2 = Room.create(goblin_shark: false, kracken: false,
 iceberg: false, lochness_monster: false, whirlpool: false, room_options: [1,10,3])
