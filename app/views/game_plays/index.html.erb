@@ -2,31 +2,32 @@
 <table>
   <thead>
     <tr>
-
       <th>You are in room:</th>
       <th colspan="3"></th>
     </tr>
   </thead>
-
   <tbody>
     <% @game_plays.each do |game_play| %>
       <tr>
         <td><%= game_play.room_id %></td>
         <td><%= goblin(game_play.room.goblin_shark)%></td>
-        <td><%= lochness(game_play.room.lochness_monster) %></td>
-        <td><%= me_talk_pretty(game_play.room.whirlpool) %></td>
-        <td><%= me_talk_pretty(game_play.room.kracken) %></td>
+        <td><%= game_play.room.lochness_monster %></td>
+        <td><%= whirlpool(game_play.room.whirlpool)%></td>
+        <td><%= game_play.room.kracken %></td>
+        <td><%= game_play.room.kracken%></td>
         <td><%= iceberg(game_play.room.iceberg) %></td>
       </tr>
     <% end %>
-
   </tbody>
 </table>
 
 <%if @gameover == true%>
 <%= link_to "Play Again!", root_path, class: "button"%>
 <%end%>
-
+  <% if flash[:lochness] %>
+  <div class="alert-box info radius"><%=flash[:lochness] %></div>
+  <%= link_to "Ahhh", root_path, class: "button"%>
+<% end %>
 
 <br>
 <p><%= senses %></p>
