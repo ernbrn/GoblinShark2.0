@@ -13,25 +13,25 @@ module GamePlaysHelper
     if monster == true
       GamePlay.delete_all
       GamePlay.create(room_id:20)
-
       @gameover = true
       "The Goblin Shark was in that room! He ate you up!!"
-
     end
   end
 
-  def lochness(monster)
-    if monster == true
-      rando = Random.new
-      GamePlay.create(room_id: rand(20))
-      @lochness = true
-      "The Lochness Monster was in that room! He moved you to a random room!!!"
-    end
+def lochness(monster)
+  if monster == true
+    GamePlay.create(room_id: rand(20))
+    flash[:lochness] = "The Lochness Monster was in that room! He moved you to a random room!"
   end
+end
+
+
+
 
   # def lochness(monster)
   #   if monster == true
-  #     "The Lochness Monster was in that room! He ate you up!!"
+  #     GamePlay.create(room_id: rand(20))
+  #     "The Lochness Monster was in that room! He moved you to !!"
   #   end
   # end
 

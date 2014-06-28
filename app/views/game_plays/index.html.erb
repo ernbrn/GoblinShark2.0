@@ -4,8 +4,6 @@
     <tr>
 
       <th>You are in room:</th>
-
-
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,8 +17,6 @@
         <td><%= me_talk_pretty(game_play.room.whirlpool) %></td>
         <td><%= me_talk_pretty(game_play.room.kracken) %></td>
         <td><%= iceberg(game_play.room.iceberg) %></td>
-
-
       </tr>
     <% end %>
 
@@ -30,11 +26,6 @@
 <%if @gameover == true%>
 <%= link_to "Play Again!", root_path, class: "button"%>
 <%end%>
-
-<%if @lochness == true%>
-<%= link_to "Ahhhh!", root_path, class: "button"%>
-<%end%>
-<%@lochness = false%>
 
 
 <br>
