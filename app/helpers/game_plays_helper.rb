@@ -10,8 +10,8 @@ module GamePlaysHelper
 
   def  goblin(monster)
     if monster == true
-      "The Goblin Shark was in that room! He ate you up!!"
       GamePlay.delete_all
+      "The Goblin Shark was in that room! He ate you up!!"
     end
   end
 
