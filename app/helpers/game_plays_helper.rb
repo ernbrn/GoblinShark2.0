@@ -47,4 +47,10 @@ module GamePlaysHelper
 
    end
   end
+
+  def monster
+    if @game_plays.last.room.lochness_monster || @game_plays.last.room.kracken
+
+    end
+  end
 end
