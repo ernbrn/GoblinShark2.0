@@ -15,9 +15,11 @@ class GamePlaysController < ApplicationController
 
   # GET /game_plays/new
   def new
-    @game_play = GamePlay.new
-    @game_plays = GamePlay.all
+
+    @game_play =GamePlay.create(room_id: params[:room_id])
+    redirect_to root_url
   end
+
 
   # GET /game_plays/1/edit
   def edit
