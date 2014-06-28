@@ -1,4 +1,4 @@
-<h1>Listing game_plays</h1>
+<h1>Lets Hunt the Goblin Shark</h1>
 
 <table>
   <thead>
@@ -27,11 +27,10 @@
         <td><%= me_talk_pretty(game_play.room.kracken) %></td>
         <td><%= me_talk_pretty(game_play.room.iceberg) %></td>
 
-        <td><%= link_to 'Show', game_play %></td>
-        <td><%= link_to 'Edit', edit_game_play_path(game_play) %></td>
-        <td><%= link_to 'Destroy', game_play, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
       </tr>
     <% end %>
+
   </tbody>
 </table>
 
@@ -40,5 +39,9 @@
 <%end%>
 
 <br>
-
-<%= link_to 'New Game play', new_game_play_path %>
+<h3>What room would you like to go to next?</h3>
+<ul class="inline-list">
+<li><%= button_to "#{@game_plays.last.room.room_options[0]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
+<li><%= button_to "#{@game_plays.last.room.room_options[1]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
+<li><%= button_to "#{@game_plays.last.room.room_options[2]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
+</ul>

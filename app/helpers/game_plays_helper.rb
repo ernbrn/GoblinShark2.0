@@ -13,8 +13,10 @@ module GamePlaysHelper
     if monster == true
       GamePlay.delete_all
       GamePlay.create(room_id:20)
-      "The Goblin Shark was in that room! He ate you up!! GAME OVER"
+
       @gameover = true
+      "The Goblin Shark was in that room! He ate you up!!"
+
     end
   end
 
