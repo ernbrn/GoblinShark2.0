@@ -16,8 +16,7 @@ class GamePlaysController < ApplicationController
   # GET /game_plays/new
   def new
     @game_play = GamePlay.new
-
-
+    @game_plays = GamePlay.all
   end
 
   # GET /game_plays/1/edit

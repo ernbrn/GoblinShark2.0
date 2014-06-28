@@ -1,4 +1,14 @@
-<h1>New game_play</h1>
+<h1>Choose your room!</h1>
+
+Your options are
+<% @game_plays.each do |game_play| %>
+<td><%game_play.room.room_options.each do |la| %>
+<%= la %>
+</td>
+<%end%>
+<%end%>
+
+
 
 <%= render 'form' %>
 
