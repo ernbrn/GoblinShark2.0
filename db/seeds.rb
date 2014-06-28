@@ -62,7 +62,7 @@ r18 = Room.create(goblin_shark: false, kracken: false,
 iceberg: false, lochness_monster: false, whirlpool: false, room_options: [9,17,19])
 
 r19 = Room.create(goblin_shark: false, kracken: false,
-iceberg: false, lochness_monster: false, whirlpool: false, room_options: [11,18,20])
+iceberg: true, lochness_monster: false, whirlpool: false, room_options: [11,18,20])
 
 r20 = Room.create(goblin_shark: false, kracken: false,
 iceberg: false, lochness_monster: false, whirlpool: false, room_options: [13,16,19])
