@@ -42,6 +42,12 @@ module GamePlaysHelper
     end
   end
 
+  def monster
+      if @game_plays.last.room.lochness_monster || @game_plays.last.room.kracken
+         GamePlay.create(room_id:rand(1..20))
+      end
+    end
+
   def senses
    @game_plays.last.room.room_options.each do |x|
      if Room.find(x).kracken

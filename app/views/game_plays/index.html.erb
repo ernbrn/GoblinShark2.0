@@ -1,6 +1,6 @@
 <div class="row">
-  <div class ="large-6 columns">
-<h1>Lets Hunt the Goblin Shark</h1>
+  <div class ="large-8 columns">
+<h1>Let's Hunt the Goblin Shark</h1>
 </div>
 </div>
 <div class="row">
@@ -16,13 +16,20 @@
   <tbody>
     <% @game_plays.each do |game_play| %>
       <tr>
+        <%@monster = false%>
+
         <td><%= game_play.room_id %></td>
         <td><%= goblin(game_play.room.goblin_shark)%></td>
-        <td><%= game_play.room.lochness_monster %></td>
+        <td></td>
+        <%if game_play.room.lochness_monster == true%>
+        <% @monster = true %>
+        <%end%>
+        <%game_play.room.lochness_monster = false%>
         <td><%= whirlpool(game_play.room.whirlpool)%></td>
         <td><%= game_play.room.kracken %></td>
         <td><%= game_play.room.kracken%></td>
         <td><%= iceberg(game_play.room.iceberg) %></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -34,10 +41,12 @@
 <%if @gameover == true%>
 <%= link_to "Play Again!", root_path, class: "button"%>
 <%end%>
-  <% if flash[:lochness] %>
-  <div class="alert-box info radius"><%=flash[:lochness] %></div>
-  <%= link_to "Ahhh", root_path, class: "button"%>
+  <% if @monster == true %>
+<%= button_to "The Lochness Monster is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
 <% end %>
+
+
+
 <br>
 </i>
 </div>
@@ -45,11 +54,13 @@
 <div class="row">
   <div class ="large-8 columns">
 <p><%= senses %></p>
+<%if @monster != true%>
 <h3>What room would you like to go to next?</h3>
 <ul class="inline-list">
 <li><%= button_to "#{@game_plays.last.room.room_options[0]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
 <li><%= button_to "#{@game_plays.last.room.room_options[1]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
 <li><%= button_to "#{@game_plays.last.room.room_options[2]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
 </ul>
+<%end%>
 </div>
 </div>
