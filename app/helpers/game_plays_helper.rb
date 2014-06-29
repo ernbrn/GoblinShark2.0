@@ -69,4 +69,10 @@ module GamePlaysHelper
 
    end
   end
+# this needs testing ... im to tired to keep going
+  def monster
+    if @game_plays.last.room.lochness_monster || @game_plays.last.room.kracken
+        GamePlay.create(room_id:rand(1..20))
+    end
+  end
 end
