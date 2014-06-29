@@ -18,20 +18,6 @@ module GamePlaysHelper
     end
   end
 
-    # def  lochness(monster)
-    #   if monster == true
-    #     GamePlay.create(room_id:rand(20))
-    #     flash[:lochness] = "The lochness monster moved you to a new room!!"
-    #   end
-    # end
-
-
-  # def lochness(monster)
-  #   if monster == true
-  #     GamePlay.create(room_id: rand(20))
-  #     "The Lochness Monster was in that room! He moved you to !!"
-  #   end
-  # end
 
   def iceberg(monster)
     if monster == true
@@ -42,10 +28,18 @@ module GamePlaysHelper
     end
   end
 
+  def monster
+      if @game_plays.last.room.lochness_monster || @game_plays.last.room.kracken
+         GamePlay.create(room_id:rand(1..20))
+      end
+    end
+
   def senses
    @game_plays.last.room.room_options.each do |x|
      if Room.find(x).kracken
-       return "My spidey senes fear the Kracken is near"
+        "My spidey senes fear the Kracken is near"
+      else
+        return nil
      end
      if Room.find(x).lochness_monster
        return "My spidey senes fear the Lochness Monster is near"
@@ -59,7 +53,6 @@ module GamePlaysHelper
      if Room.find(x).goblin_shark
        return "Do you hear that? Sounds like the dreaded Goblin shark is near"
      end
-
    end
   end
 # this needs testing ... im to tired to keep going
