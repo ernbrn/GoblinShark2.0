@@ -52,6 +52,14 @@
 </i>
 </div>
 </div>
+<div class="row">
+  <% if flash[:shoot] %>
+      <div class="alert-box info-radius"<%=flash[:shoot] %></div>
+  <% end %>
+  <% if flash[:miss] %>
+      <div class="alert-box info-radius"<%=flash[:miss] %></div>
+  <% end %>
+</div>
 <%if @gameover != true%>
 <div class="row">
   <div class ="large-8 columns">
@@ -63,6 +71,11 @@
 <li><%= button_to "#{@game_plays.last.room.room_options[1]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
 <li><%= button_to "#{@game_plays.last.room.room_options[2]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
 </ul>
+  <ul class="inline-list">
+      <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
+      <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
+      <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
+  </ul>
 <%end%>
 </div>
 </div>

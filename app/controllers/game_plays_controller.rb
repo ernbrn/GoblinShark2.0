@@ -18,11 +18,19 @@ class GamePlaysController < ApplicationController
   def new
 
     @game_play =GamePlay.create(room_id: params[:room_id])
-    @game_plays = GamePlay.all
-    monster
+    # @game_plays = GamePlay.all
+    # monster
     redirect_to root_url
   end
 
+  def shoot
+    if Room.find(params[:weapon]).goblin_shark
+      flash[:shoot] = "You win"
+    else
+      flash[:miss] =  "Your anchor missed"
+    end
+  redirect_to root_url
+  end
 
   # GET /game_plays/1/edit
   def edit
