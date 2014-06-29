@@ -27,7 +27,7 @@ class GamePlaysController < ApplicationController
     if Room.find(params[:weapon]).goblin_shark
       flash[:shoot] = "You win"
     else
-      flash[:miss] =  "Your anchor missed"
+      flash.keep[:miss] =  "Your anchor missed"
     end
   redirect_to root_url
   end
