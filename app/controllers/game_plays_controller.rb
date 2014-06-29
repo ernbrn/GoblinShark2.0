@@ -1,4 +1,5 @@
 class GamePlaysController < ApplicationController
+  include GamePlaysHelper
   before_action :set_game_play, only: [:show, :edit, :update, :destroy]
 
   # GET /game_plays
@@ -15,6 +16,8 @@ class GamePlaysController < ApplicationController
   # GET /game_plays/new
   def new
     @game_play =GamePlay.create(room_id: params[:room_id])
+    @game_plays = GamePlay.all
+    monster
     redirect_to root_url
   end
 
