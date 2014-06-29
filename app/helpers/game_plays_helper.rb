@@ -51,7 +51,9 @@ module GamePlaysHelper
   def senses
    @game_plays.last.room.room_options.each do |x|
      if Room.find(x).kracken
-       return "My spidey senes fear the Kracken is near"
+        "My spidey senes fear the Kracken is near"
+      else
+        return nil
      end
      if Room.find(x).lochness_monster
        return "My spidey senes fear the Lochness Monster is near"
@@ -65,7 +67,6 @@ module GamePlaysHelper
      if Room.find(x).goblin_shark
        return "Do you hear that? Sounds like the dreaded Goblin shark is near"
      end
-
    end
   end
 end

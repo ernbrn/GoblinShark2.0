@@ -17,6 +17,7 @@
     <% @game_plays.each do |game_play| %>
       <tr>
         <%@monster = false%>
+        <%@kracken = false%>
 
         <td><%= game_play.room_id %></td>
         <td><%= goblin(game_play.room.goblin_shark)%></td>
@@ -24,10 +25,10 @@
         <%if game_play.room.lochness_monster == true%>
         <% @monster = true %>
         <%end%>
-        <%game_play.room.lochness_monster = false%>
         <td><%= whirlpool(game_play.room.whirlpool)%></td>
-        <td><%= game_play.room.kracken %></td>
-        <td><%= game_play.room.kracken%></td>
+        <%if game_play.room.kracken == true%>
+        <%@kracken = true%>
+        <%end%>
         <td><%= iceberg(game_play.room.iceberg) %></td>
 
       </tr>
@@ -45,6 +46,10 @@
 <%= button_to "The Lochness Monster is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
 <% end %>
 
+<% if @kracken == true %>
+<%= button_to "The Kracken has emerged and is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
+<% end %>
+
 
 
 <br>
@@ -54,7 +59,7 @@
 <div class="row">
   <div class ="large-8 columns">
 <p><%= senses %></p>
-<%if @monster != true%>
+<%if @monster == false &&  @kracken == false%>
 <h3>What room would you like to go to next?</h3>
 <ul class="inline-list">
 <li><%= button_to "#{@game_plays.last.room.room_options[0]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
