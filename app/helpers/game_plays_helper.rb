@@ -18,6 +18,13 @@ module GamePlaysHelper
     end
   end
 
+  def monster
+      if @game_plays.last.room.lochness_monster || @game_plays.last.room.kracken
+ -
+ +        GamePlay.create(room_id:rand(1..20))
+      end
+    end
+
     # def  lochness(monster)
     #   if monster == true
     #     GamePlay.create(room_id:rand(20))
