@@ -1,14 +1,7 @@
-<div class="row">
-  <div class ="large-6 columns">
 <h1>Lets Hunt the Goblin Shark</h1>
-</div>
-</div>
-<div class="row">
-  <div class ="large-6 columns">
 <table>
   <thead>
     <tr>
-
       <th>You are in room:</th>
       <th colspan="3"></th>
     </tr>
@@ -27,10 +20,7 @@
     <% end %>
   </tbody>
 </table>
-</div>
-</div>
-<div class="row">
-  <div class ="large-8 columns">
+
 <%if @gameover == true%>
 <%= link_to "Play Again!", root_path, class: "button"%>
 <%end%>
@@ -38,12 +28,8 @@
   <div class="alert-box info radius"><%=flash[:lochness] %></div>
   <%= link_to "Ahhh", root_path, class: "button"%>
 <% end %>
+
 <br>
-</i>
-</div>
-</div>
-<div class="row">
-  <div class ="large-8 columns">
 <p><%= senses %></p>
 <h3>What room would you like to go to next?</h3>
 <ul class="inline-list">
@@ -51,5 +37,3 @@
 <li><%= button_to "#{@game_plays.last.room.room_options[1]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
 <li><%= button_to "#{@game_plays.last.room.room_options[2]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
 </ul>
-</div>
-</div>
