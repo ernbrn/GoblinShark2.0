@@ -4,13 +4,12 @@
 </div>
 </div>
 <div class="row">
-  <div class ="large-6 columns">
+  <div class ="large-8 columns">
 <table>
   <thead>
     <tr>
 
       <th>You are in room:</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
@@ -18,20 +17,17 @@
       <tr>
         <%@monster = false%>
         <%@kracken = false%>
-
-        <td><%= game_play.room_id %></td>
-        <td><%= goblin(game_play.room.goblin_shark)%></td>
-        <td></td>
+        <td><center><%= game_play.room_id %></center></td>
+        </tr>
+        <%= goblin(game_play.room.goblin_shark)%>
         <%if game_play.room.lochness_monster == true%>
         <% @monster = true %>
         <%end%>
-        <td><%= whirlpool(game_play.room.whirlpool)%></td>
+        <%= whirlpool(game_play.room.whirlpool)%>
         <%if game_play.room.kracken == true%>
         <%@kracken = true%>
         <%end%>
-        <td><%= iceberg(game_play.room.iceberg) %></td>
-
-      </tr>
+        <%= iceberg(game_play.room.iceberg) %>
     <% end %>
   </tbody>
 </table>

@@ -18,20 +18,6 @@ module GamePlaysHelper
     end
   end
 
-    # def  lochness(monster)
-    #   if monster == true
-    #     GamePlay.create(room_id:rand(20))
-    #     flash[:lochness] = "The lochness monster moved you to a new room!!"
-    #   end
-    # end
-
-
-  # def lochness(monster)
-  #   if monster == true
-  #     GamePlay.create(room_id: rand(20))
-  #     "The Lochness Monster was in that room! He moved you to !!"
-  #   end
-  # end
 
   def iceberg(monster)
     if monster == true
