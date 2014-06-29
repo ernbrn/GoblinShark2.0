@@ -1,36 +1,44 @@
 module GamePlaysHelper
 
-
-  def me_talk_pretty(words)
-    if words == false
-       "Nope!"
-    else
-      "Yes"
-    end
-  end
-
   def  goblin(monster)
     if monster == true
       GamePlay.delete_all
       GamePlay.create(room_id:20)
-
       @gameover = true
       "The Goblin Shark was in that room! He ate you up!!"
-
     end
   end
 
-
-
-  def lochness(monster)
+  def whirlpool(monster)
     if monster == true
-      "The Lochness Monster was in that room! He moved you to a random room!!!"
+      GamePlay.delete_all
+      GamePlay.create(room_id:20)
+      @gameover = true
+      "There was an whirlpool in that room! You died!"
     end
   end
 
-  def lochness(monster)
+    # def  lochness(monster)
+    #   if monster == true
+    #     GamePlay.create(room_id:rand(20))
+    #     flash[:lochness] = "The lochness monster moved you to a new room!!"
+    #   end
+    # end
+
+
+  # def lochness(monster)
+  #   if monster == true
+  #     GamePlay.create(room_id: rand(20))
+  #     "The Lochness Monster was in that room! He moved you to !!"
+  #   end
+  # end
+
+  def iceberg(monster)
     if monster == true
-      "The Lochness Monster was in that room! He ate you up!!"
+      GamePlay.delete_all
+      GamePlay.create(room_id:20)
+      @gameover = true
+      "There was an iceberg in that room! You died!"
     end
   end
 
