@@ -18,7 +18,7 @@ class GamePlaysController < ApplicationController
   # GET /game_plays/new
   def new
 
-    @game_play =GamePlay.create(room_id: params[:room_id])
+    @game_play = GamePlay.create(room_id: params[:room_id])
     # @game_plays = GamePlay.all
     # monster
     redirect_to root_url
