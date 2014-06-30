@@ -1,90 +1,74 @@
 <div class="row">
-  <div class ="large-8 columns">
-<h1>Let's Hunt the Goblin Shark</h1>
-<i class="fa fa-anchor "></i>
-</div>
-</div>
-<div class="row">
-  <div class ="large-8 columns">
-<table>
-  <thead>
-    <tr>
+  <div class="large-12 columns">
+    <ul class="inline-list">
+      <li><h3>Let's Hunt The Dreaded Golbin Sharky!</h3></li>
+      <li><%= link_to "Instructions", static_pages_instructions_path, class: "round tiny button" %></li>
+    </ul>
+  </div>
 
-      <th>You are in room:</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @game_plays.each do |game_play| %>
-      <tr>
-        <%@monster = false%>
-        <%@kracken = false%>
-        <td><center><%= game_play.room_id %></center></td>
+</div>
+
+<div class="row">
+  <div class="large-3 columns ">
+    <h5>Your Adventure History:</h5>
+    <% @game_plays.reverse_order.each do |game_play| %>
+        <tr>
+          <%@monster = false%>
+          <%@kracken = false%>
+          <td><center><%= game_play.room_id %></center></td>
         </tr>
-        <%= goblin(game_play.room.goblin_shark)%>
-        <%if game_play.room.lochness_monster == true%>
-        <% @monster = true %>
-        <%end%>
-        <%= whirlpool(game_play.room.whirlpool)%>
-        <%if game_play.room.kracken == true%>
-        <%@kracken = true%>
-        <%end%>
-        <%= iceberg(game_play.room.iceberg) %>
+
     <% end %>
-  </tbody>
-</table>
-</div>
-</div>
-<div class="row">
-  <div class ="large-8 columns">
-
-  <% if @monster == true %>
-<%= button_to "The Lochness Monster is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
-<% end %>
-
-<% if @kracken == true %>
-<%= button_to "The Kracken has emerged and is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
-<% end %>
-
-
-<br>
-</i>
-</div>
-</div>
-
-
-<div class="row">
-
-</div>
-
-<div class="row">
-  <div class ="large-8 columns">
-
-    <% if flash[:shoot] %>
-        <div class="alert-box info-radius"><%=flash[:shoot]%></div>
-        <%@gameover = true%>
-    <% end %>
+  </div>
+  <div class="large-8 columns">
+    <p> You are currently in room: <%= @game_plays.last.room_id %></p>
+    <!--#game status-->
+    <div class="row">
+      <%= goblin(@game_plays.last.room.goblin_shark)%>
+      <%if @game_plays.last.room.lochness_monster%>
+          <% @monster = true %>
+      <%end%>
+      <%= whirlpool(@game_plays.last.room.whirlpool)%>
+      <%if @game_plays.last.room.kracken %>
+          <%@kracken = true%>
+      <%end%>
+      <%= iceberg(@game_plays.last.room.iceberg) %>
+    </div>
     <%if @gameover == true%>
-    <%= link_to "Play Again!", root_path, class: "button"%>
+        <%= link_to "Play Again!", root_path, class: "button"%>
     <%end%>
-    <% if flash[:miss] %>
-        <div class="alert-box info-radius"><%=flash[:miss]%></div>
-  <%end%>
+    <% if @monster == true %>
+        <%= button_to "The Lochness Monster is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
+    <% end %>
 
-<%if @gameover != true%>
-<p><%= senses %></p>
-<%if @monster == false &&  @kracken == false%>
-<h3>What room would you like to go to next?</h3>
-<ul class="inline-list">
-<li><%= button_to "#{@game_plays.last.room.room_options[0]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
-<li><%= button_to "#{@game_plays.last.room.room_options[1]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
-<li><%= button_to "#{@game_plays.last.room.room_options[2]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
-</ul>
-  <ul class="inline-list">
-      <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
-      <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
-      <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
-  </ul>
-<%end%>
+    <% if @kracken == true %>
+        <%= button_to "The Kracken has emerged and is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
+    <% end %>
+
+    <!--#flash-->
+    <% if flash[:shoot] %>
+        <div class="alert-box info-radius"><%=flash[:shoot] %></div>
+    <% end %>
+    <% if flash[:miss] %>
+        <div class="alert-box info-radius"><%=flash[:miss] %></div>
+    <% end %>
+
+
+    <%if @gameover != true%>
+        <p><%= senses %></p>
+        <%if @monster == false &&  @kracken == false%>
+            <h3>What room would you like to go to next?</h3>
+            <ul class="inline-list">
+              <li><%= button_to "#{@game_plays.last.room.room_options[0]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
+              <li><%= button_to "#{@game_plays.last.room.room_options[1]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
+              <li><%= button_to "#{@game_plays.last.room.room_options[2]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
+            </ul>
+            <ul class="inline-list">
+              <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
+              <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
+              <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
+            </ul>
+        <%end%>
+    <% end %>
+  </div>
 </div>
-</div>
-<%end%>

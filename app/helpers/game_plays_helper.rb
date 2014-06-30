@@ -3,7 +3,7 @@ module GamePlaysHelper
   def  goblin(monster)
     if monster == true
       GamePlay.delete_all
-      GamePlay.create(room_id:20)
+      GamePlay.create(room: Room.find_by(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false))
       @gameover = true
       "The Goblin Shark was in that room! He ate you up!!"
     end
@@ -12,7 +12,7 @@ module GamePlaysHelper
   def whirlpool(monster)
     if monster == true
       GamePlay.delete_all
-      GamePlay.create(room_id:20)
+      GamePlay.create(room: Room.find_by(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false))
       @gameover = true
       "There was an whirlpool in that room! You died!"
     end
@@ -22,7 +22,7 @@ module GamePlaysHelper
   def iceberg(monster)
     if monster == true
       GamePlay.delete_all
-      GamePlay.create(room_id:20)
+      GamePlay.create(room: Room.find_by(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false))
       @gameover = true
       "There was an iceberg in that room! You died!"
     end
@@ -56,7 +56,7 @@ module GamePlaysHelper
       Room.find(x).goblin_shark == true
       return "Do you hear that? Sounds like the dreaded Goblin shark is near"
     else
-      nil
+      return nil
     end
 
 
