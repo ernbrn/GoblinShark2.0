@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   post "game_plays/new"
   post "game_plays/shoot"
   get "static_pages/instructions"
+  post "game_plays/restart"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

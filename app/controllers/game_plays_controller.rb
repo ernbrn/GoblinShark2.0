@@ -15,6 +15,14 @@ class GamePlaysController < ApplicationController
   def show
   end
 
+  def restart
+    Room.destroy_all
+    GamePlay.destroy_all
+
+    Rails.application.load_seed
+    redirect_to root_url
+  end
+
   # GET /game_plays/new
   def new
 
