@@ -62,6 +62,8 @@ module GamePlaysHelper
 
  end
   end
+
+
 # this needs testing ... im to tired to keep going
 #   def monster
 #     if @game_plays.last.room.lochness_monster || @game_plays.last.room.kracken

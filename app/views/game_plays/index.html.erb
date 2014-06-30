@@ -36,9 +36,7 @@
 </div>
 <div class="row">
   <div class ="large-8 columns">
-<%if @gameover == true%>
-<%= link_to "Play Again!", root_path, class: "button"%>
-<%end%>
+
   <% if @monster == true %>
 <%= button_to "The Lochness Monster is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
 <% end %>
@@ -52,9 +50,27 @@
 </i>
 </div>
 </div>
-<%if @gameover != true%>
+
+
+<div class="row">
+
+</div>
+
 <div class="row">
   <div class ="large-8 columns">
+
+    <% if flash[:shoot] %>
+        <div class="alert-box info-radius"><%=flash[:shoot]%></div>
+        <%@gameover = true%>
+    <% end %>
+    <%if @gameover == true%>
+    <%= link_to "Play Again!", root_path, class: "button"%>
+    <%end%>
+    <% if flash[:miss] %>
+        <div class="alert-box info-radius"><%=flash[:miss]%></div>
+  <%end%>
+
+<%if @gameover != true%>
 <p><%= senses %></p>
 <%if @monster == false &&  @kracken == false%>
 <h3>What room would you like to go to next?</h3>
@@ -63,6 +79,11 @@
 <li><%= button_to "#{@game_plays.last.room.room_options[1]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
 <li><%= button_to "#{@game_plays.last.room.room_options[2]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
 </ul>
+  <ul class="inline-list">
+      <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
+      <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
+      <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
+  </ul>
 <%end%>
 </div>
 </div>
