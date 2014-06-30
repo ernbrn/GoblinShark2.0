@@ -34,9 +34,7 @@
       <%end%>
       <%= iceberg(@game_plays.last.room.iceberg) %>
     </div>
-    <%if @gameover == true%>
-        <%= link_to "Play Again!", root_path, class: "button"%>
-    <%end%>
+
     <% if @monster == true %>
         <%= button_to "The Lochness Monster is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
     <% end %>
@@ -47,12 +45,15 @@
 
     <!--#flash-->
     <% if flash[:shoot] %>
+    <%@gameover = true%>
         <div class="alert-box info-radius"><%=flash[:shoot] %></div>
     <% end %>
     <% if flash[:miss] %>
         <div class="alert-box info-radius"><%=flash[:miss] %></div>
     <% end %>
-
+<%if @gameover == true%>
+    <%= link_to "Play Again!", root_path, class: "button"%>
+<%end%>
 
     <%if @gameover != true%>
         <p><%= senses %></p>
