@@ -52,17 +52,25 @@
 </i>
 </div>
 </div>
+
+
+
+
 <div class="row">
-  <% if flash[:shoot] %>
-      <div class="alert-box info-radius"<%=flash[:shoot] %></div>
-  <% end %>
-  <% if flash[:miss] %>
-      <div class="alert-box info-radius"<%=flash[:miss] %></div>
-  <% end %>
+
 </div>
 <%if @gameover != true%>
 <div class="row">
   <div class ="large-8 columns">
+
+    <% if flash[:shoot] %>
+        <div class="alert-box info-radius"><%=flash[:shoot]%></div>
+    <% end %>
+    <% if flash[:miss] %>
+        <div class="alert-box info-radius"><%=flash[:miss]%></div>
+    <% end %>
+
+
 <p><%= senses %></p>
 <%if @monster == false &&  @kracken == false%>
 <h3>What room would you like to go to next?</h3>
