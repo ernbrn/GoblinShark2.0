@@ -7,7 +7,7 @@ class GamePlaysController < ApplicationController
   def index
     @game_plays = GamePlay.all
     @gameover = false
-  
+
   end
 
   # GET /game_plays/1
@@ -27,6 +27,8 @@ class GamePlaysController < ApplicationController
   def shoot
     if Room.find(params[:weapon]).goblin_shark
       flash[:shoot] = "You win"
+      GamePlay.delete_all
+GamePlay.create(room: Room.find_by(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false))
     else
       flash[:miss] =  "Your anchor missed"
     end

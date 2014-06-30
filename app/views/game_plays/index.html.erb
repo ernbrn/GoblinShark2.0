@@ -36,9 +36,7 @@
 </div>
 <div class="row">
   <div class ="large-8 columns">
-<%if @gameover == true%>
-<%= link_to "Play Again!", root_path, class: "button"%>
-<%end%>
+
   <% if @monster == true %>
 <%= button_to "The Lochness Monster is carrying you to a new room! Click here to play dead.", {action: "new", params: {room_id:rand(1..20) }}, class: " button alert" %>
 <% end %>
@@ -54,23 +52,25 @@
 </div>
 
 
-
-
 <div class="row">
 
 </div>
-<%if @gameover != true%>
+
 <div class="row">
   <div class ="large-8 columns">
 
     <% if flash[:shoot] %>
         <div class="alert-box info-radius"><%=flash[:shoot]%></div>
+        <%@gameover = true%>
     <% end %>
+    <%if @gameover == true%>
+    <%= link_to "Play Again!", root_path, class: "button"%>
+    <%end%>
     <% if flash[:miss] %>
         <div class="alert-box info-radius"><%=flash[:miss]%></div>
-    <% end %>
+  <%end%>
 
-
+<%if @gameover != true%>
 <p><%= senses %></p>
 <%if @monster == false &&  @kracken == false%>
 <h3>What room would you like to go to next?</h3>
