@@ -6,6 +6,7 @@ class GamePlaysController < ApplicationController
   # GET /game_plays.json
   def index
     @game_plays = GamePlay.all
+
     @gameover = false
   end
 
@@ -14,22 +15,29 @@ class GamePlaysController < ApplicationController
   def show
   end
 
+
+
   # GET /game_plays/new
   def new
 
     @game_play =GamePlay.create(room_id: params[:room_id])
+    @monster = false
     # @game_plays = GamePlay.all
     # monster
     redirect_to root_url
   end
 
+
   def shoot
     if Room.find(params[:weapon]).goblin_shark
       flash[:shoot] = "You win"
+      # restart
+      redirect_to root_url
     else
       flash.keep[:miss] =  "Your anchor missed"
+      redirect_to root_url
     end
-  redirect_to root_url
+
   end
 
   # GET /game_plays/1/edit

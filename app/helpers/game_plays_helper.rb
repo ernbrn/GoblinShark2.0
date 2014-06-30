@@ -1,18 +1,27 @@
 module GamePlaysHelper
 
+  # #restarts game with new rooms
+  # def restart
+  #   GamePlay.delete_all
+  #   @clean_room = Room.where(goblin_shark: false, lochness_monster:false, whirlpool:false, kracken:false, iceberg:false)
+  #   GamePlay.create(room_id: @clean_room[rand(1..15)])
+  #
+  # end
   def  goblin(monster)
-    if monster == true
+    if monster
+      @first_room = GamePlay.first.room_id
       GamePlay.delete_all
-      GamePlay.create(room_id:20)
+      GamePlay.create(room_id: @first_room)
       @gameover = true
       "The Goblin Shark was in that room! He ate you up!!"
     end
   end
 
   def whirlpool(monster)
-    if monster == true
+    if monster
+      @first_room = GamePlay.first.room_id
       GamePlay.delete_all
-      GamePlay.create(room_id:20)
+      GamePlay.create(room_id: @first_room)
       @gameover = true
       "There was an whirlpool in that room! You died!"
     end
@@ -20,9 +29,10 @@ module GamePlaysHelper
 
 
   def iceberg(monster)
-    if monster == true
+    if monster
+      @first_room = GamePlay.first.room_id
       GamePlay.delete_all
-      GamePlay.create(room_id:20)
+      GamePlay.create(room_id: @first_room)
       @gameover = true
       "There was an iceberg in that room! You died!"
     end
@@ -56,7 +66,7 @@ module GamePlaysHelper
       Room.find(x).goblin_shark == true
       return "Do you hear that? Sounds like the dreaded Goblin shark is near"
     else
-      nil
+      return nil
     end
 
 

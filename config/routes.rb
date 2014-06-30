@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   resources :game_plays
   post "game_plays/new"
   post "game_plays/shoot"
+  get "static_pages/instructions"
+  get "static_pages/winning"
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
