@@ -7,13 +7,17 @@ class GamePlaysController < ApplicationController
   def index
     @game_plays = GamePlay.all
     @gameover = false
-
+    respond_to do |format|
+     format.html
+     format.js
+   end
   end
 
   # GET /game_plays/1
   # GET /game_plays/1.json
   def show
   end
+
 
   # GET /game_plays/new
   def new

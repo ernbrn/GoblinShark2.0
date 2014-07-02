@@ -2,9 +2,19 @@
   <div class="large-12 columns">
     <ul class="inline-list">
       <li><h3>Hunt The Goblin Shark!</h3></li>
+      <a href="#" data-reveal-id="myModal">Click Me For A Modal</a>
+      <div id="myModal" class="reveal-modal" data-reveal>
+  <h2>Awesome. I have it.</h2>
+  <p class="lead">Your couch.  It is mine.</p>
+  <p>Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
       <li><%= link_to "Instructions", static_pages_instructions_path, class: "round tiny button" %></li>
+
     </ul>
   </div>
+
+
 
 </div>
 
@@ -60,12 +70,15 @@
         <%if @monster == false &&  @kracken == false%>
             <h3>What room would you like to go to next?</h3>
             <ul class="inline-list">
+              <div class = "warning">
+                <span>Choose a room</span>
               <li><%= button_to "#{@game_plays.last.room.room_options[0]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
               <li><%= button_to "#{@game_plays.last.room.room_options[1]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
               <li><%= button_to "#{@game_plays.last.room.room_options[2]}", {action: "new", params: {room_id: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
             </ul>
+          </div>
             <ul class="inline-list">
-              <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[0] }}, class: "round tiny button" %></li>
+              <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[0] }}, remote: true, id: "butt", class: "round tiny button" %></li>
               <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[1] }}, class: "round tiny button" %></li>
               <li><%= button_to "Shoot", {action: "shoot", params: {weapon: @game_plays.last.room.room_options[2] }}, class: "round tiny button" %></li>
             </ul>
